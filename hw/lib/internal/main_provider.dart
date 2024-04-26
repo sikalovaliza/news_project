@@ -4,6 +4,7 @@ import 'dart:convert';
 
 class GlobalData extends ChangeNotifier {
   List<Map<String?, dynamic>> likedArticles = [];
+  List<Map<String, dynamic>> filteredArticles = [];
 
   GlobalData() {
     loadLikedArticles();
@@ -55,5 +56,17 @@ class GlobalData extends ChangeNotifier {
       }
     }
     likedArticles = updatedLikedArticles;
+  }
+
+  void toggleSearch(Map<String?, dynamic> articles, bool isSearch, value) {
+    if (isSearch) {
+      filteredArticles = articles.entries
+          .where((news) =>
+              news.value['title'].toLowerCase().contains(value.toLowerCase()))
+          .cast<Map<String, dynamic>>()
+          .toList();
+    } else {
+      filteredArticles.clear();
+    }
   }
 }

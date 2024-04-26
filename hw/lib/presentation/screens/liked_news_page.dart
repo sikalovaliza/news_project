@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/ArticleWidget.dart';
+import '../widgets/article_widget.dart';
 import 'package:provider/provider.dart';
-import 'ArticleDetailScreen.dart';
-import '../../internal/Provider.dart';
+import 'article_detail_screen.dart';
+import '../../internal/main_provider.dart';
 
 class LikedNewsPage extends StatefulWidget {
   final Function() toggleTheme;
@@ -12,6 +12,7 @@ class LikedNewsPage extends StatefulWidget {
       {super.key, required this.toggleTheme, required this.navigatorKey});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LikedNewsPageState createState() => _LikedNewsPageState();
 }
 
@@ -44,8 +45,8 @@ class _LikedNewsPageState extends State<LikedNewsPage> {
                   );
                 },
                 child: SizedBox(
-                  width: 400,
-                  height: 400,
+                  width: 300,
+                  height: 150,
                   child: ArticleWidget(
                     article: globalData.likedArticles[index],
                     isLiked: true,

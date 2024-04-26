@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../presentation/screens/LikedNewsPage.dart';
+import '../screens/liked_news_page.dart';
 
 Widget buildBottomNavigationBar(BuildContext context, Function() toggleTheme,
     GlobalKey<NavigatorState> navigatorKey) {
   return BottomNavigationBar(
-    backgroundColor: Color.fromARGB(255, 132, 230, 125),
+    backgroundColor: const Color.fromARGB(227, 38, 64, 180),
     items: const [
       BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.person_solid),
@@ -18,6 +18,7 @@ Widget buildBottomNavigationBar(BuildContext context, Function() toggleTheme,
       BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.book_solid),
         label: 'Тема',
+        backgroundColor: Color.fromARGB(255, 253, 253, 253),
       ),
     ],
     onTap: (index) {

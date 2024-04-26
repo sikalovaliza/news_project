@@ -5,6 +5,8 @@ class CustomIconButton extends StatelessWidget {
   final String? text;
   final Color activeColor;
   final Function()? onPressed;
+  @override
+  // ignore: overridden_fields
   final Key? key;
 
   const CustomIconButton({

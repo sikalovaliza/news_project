@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import '../lib/data/ApiArticles.dart';
+import 'package:hw/data/api_articles.dart';
 
 //getArticleImage всегда возвращает картинку, если ссылка валидная то ее же,если нет - картинку "по умолчанию"
 // тест проверяет что в случае валидной и не валидной ссылке типа возвращаемого объекта все равно Image

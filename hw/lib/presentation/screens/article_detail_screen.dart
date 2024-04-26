@@ -28,8 +28,6 @@ class ArticleDetailScreen extends StatelessWidget {
     if (await canLaunch(url)) {
       // ignore: deprecated_member_use
       await launch(url);
-    } else {
-      throw 'Не удается открыть URL: $url';
     }
   }
 
@@ -41,7 +39,7 @@ class ArticleDetailScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          color: const Color.fromARGB(255, 81, 190, 79),
+          color: const Color.fromARGB(211, 38, 64, 179),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -55,9 +53,11 @@ class ArticleDetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.zero,
-                child: getArticleImage(article['urlToImage'], article),
-              ),
+                  padding: EdgeInsets.zero,
+                  child: Hero(
+                    tag: '${article['title']}',
+                    child: getArticleImage(article['urlToImage'], article),
+                  )),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
