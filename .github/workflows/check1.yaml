@@ -13,18 +13,20 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: 3.16.9
-    - name: Install dependencies
-      run: cd hw && flutter pub get
 
     - name: Install dependencies
       run: cd hw && flutter pub get
 
     - name: Format check
-      run: cd hw && dart format --set-exit-if-changed .
+      run: cd hw && dart format --output=none --set-exit-if-changed .
 
+    - name: Run linter
     - name: Run linter
       run: cd hw && flutter analyze
 
+    - name: Check tests
+      run: cd hw && flutter test test
+     
     - name: Check tests
       run: cd hw && flutter test test
      
