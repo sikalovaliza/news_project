@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/top_app_bar_widget.dart';
 import '../screens/article_detail_screen.dart';
 import '../widgets/article_widget.dart';
 import '../widgets/recent_article_widget.dart';
-import '../widgets/recent_article_widget.dart';
-import '../widgets/bottom_app_bar_widget.dart';
 
 Route _createRoute({required WidgetBuilder builder}) {
   return PageRouteBuilder(
