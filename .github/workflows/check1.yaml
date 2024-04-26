@@ -20,7 +20,7 @@ jobs:
       run: cd hw && flutter pub get
 
     - name: Format check
-      run: cd hw && flutter format --set-exit-if-changed .
+      run: cd hw && dart format --set-exit-if-changed .
 
     - name: Run linter
       run: cd hw && flutter analyze
