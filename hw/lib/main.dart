@@ -58,7 +58,7 @@ class NewsAppState extends State<NewsApp> {
 
       for (Map<String, dynamic> article in fetchedArticles) {
         DateTime publishedAt = dateFormat.parse(article['publishedAt']);
-        if (now.difference(publishedAt).inDays <= 2) {
+        if (now.difference(publishedAt).inDays <= 5) {
           recentArticles.add(article);
         } else {
           articles.add(article);

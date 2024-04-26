@@ -61,7 +61,7 @@ class ArticleWidgetState extends State<ArticleWidget> {
                         height: 150,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(
-                              20), // Сделайте ClipRRect с тем же радиусом закругления
+                              20),
                           child: Hero(
                             tag: '${widget.article['title']}',
                             child: getArticleImage(

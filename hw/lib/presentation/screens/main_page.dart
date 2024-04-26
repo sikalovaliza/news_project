@@ -1,27 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/top_app_bar_widget.dart';
-import 'article_detail_screen.dart';
-import '../widgets/article_widget.dart';
-import '../widgets/recent_article_widget.dart';
 import '../widgets/bottom_app_bar_widget.dart';
-
-Route _createRoute({required WidgetBuilder builder}) {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => builder(context),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(1.0, 0.0);
-      const end = Offset(0.0, 0.0);
-      const curve = Curves.decelerate;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}
+import '../widgets/list_of_news.dart';
 
 Widget home(
     BuildContext context,
@@ -41,25 +21,7 @@ Widget home(
         sliver: SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    _createRoute(
-                      builder: (context) =>
-                          ArticleDetailScreen(article: filteredArticles[index]),
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: 300,
-                  height: 150,
-                  child: ArticleWidget(
-                    article: filteredArticles[index],
-                    isLiked: false,
-                  ),
-                ),
-              );
+              return listArticles(context, filteredArticles, index, 150, true);
             },
             childCount: filteredArticles.length,
           ),
@@ -79,30 +41,7 @@ Widget home(
           ),
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        _createRoute(
-                          builder: (context) => ArticleDetailScreen(
-                              article: recentArticles[index]),
-                        ),
-                      );
-                    },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: SizedBox(
-                        width: 300,
-                        height: 250,
-                        child: RecentArticleWidget(
-                          article: recentArticles[index],
-                          isLiked: false,
-                        ),
-                      ),
-                    )),
-              );
+              return listArticles(context, recentArticles, index, 250, false);
             },
             childCount: recentArticles.length,
           ),
@@ -115,25 +54,7 @@ Widget home(
         sliver: SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    _createRoute(
-                      builder: (context) =>
-                          ArticleDetailScreen(article: articles[index]),
-                    ),
-                  );
-                },
-                child: SizedBox(
-                  width: 300,
-                  height: 150,
-                  child: ArticleWidget(
-                    article: articles[index],
-                    isLiked: false,
-                  ),
-                ),
-              );
+              return listArticles(context, articles, index, 150, true);
             },
             childCount: articles.length,
           ),

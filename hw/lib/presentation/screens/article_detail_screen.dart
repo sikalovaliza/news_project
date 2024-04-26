@@ -10,26 +10,13 @@ Image getArticleImage(String? urlToImage, Map<String?, dynamic> article) {
       fit: BoxFit.cover,
     );
   } catch (e) {
-    if (e.toString() == '[object ProgressEvent]') {
-      return Image.asset('../../pic/apple.jpg',
-          width: double.infinity, fit: BoxFit.cover);
-    } else {
-      return Image.asset('../../pic/apple.jpg',
-          width: double.infinity, fit: BoxFit.cover);
-    }
+    return Image.asset('../../pic/apple.jpg',
+        width: double.infinity, fit: BoxFit.cover);
   }
 }
 
 class ArticleDetailScreen extends StatelessWidget {
   final Map<String?, dynamic> article;
-
-  void _launchURL(String url) async {
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    }
-  }
 
   const ArticleDetailScreen({super.key, required this.article});
 
@@ -99,7 +86,7 @@ class ArticleDetailScreen extends StatelessWidget {
                         const Color.fromARGB(255, 247, 247, 247)),
                   ),
                   onPressed: () {
-                    _launchURL(article['url']);
+                    launchUrl(Uri.parse(article['url'] ?? ""));
                   },
                   child: const Text('Перейти к статье'),
                 ),

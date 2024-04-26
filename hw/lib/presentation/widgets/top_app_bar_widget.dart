@@ -18,12 +18,10 @@ PreferredSizeWidget TopAppBarWidget(BuildContext context, bool isSearch,
           decoration: const InputDecoration(
             filled: true,
             fillColor: Color.fromARGB(255, 255, 255, 255),
-            //labelText: 'Введите текст',
             border: OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.blue),
             ),
-            //contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
             labelStyle: CupertinoTextField.cupertinoMisspelledTextStyle,
           ),
           keyboardType: TextInputType.text,
