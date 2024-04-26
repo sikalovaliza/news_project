@@ -16,14 +16,17 @@ jobs:
     - name: Install dependencies
       run: cd hw && flutter pub get
 
-    - name: Format check
-      run: cd hw && dart format --set-exit-if-changed .
+    - name: Install dependencies
+      run: cd hw && flutter pub get
 
-    - name: Analyze
-      run: cd hw && flutter analyze
+    - name: Format check
+      run: cd hw && flutter format --set-exit-if-changed .
 
     - name: Run linter
-      run: cd hw && flutter pub run lint:lint
+      run: cd hw && flutter analyze
 
+    - name: Check tests
+      run: cd hw && flutter test test
+     
     - name: Build APK
       run: cd hw && flutter build apk
