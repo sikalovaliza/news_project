@@ -1,3 +1,4 @@
+
 name: Flutter CI
 
 on: [push]
@@ -6,15 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
     - uses: actions/checkout@v2
 
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        channel: stable
-        flutter-version: '3.16.9'
-        
+        flutter-version: 3.16.9
     - name: Install dependencies
       run: cd hw && flutter pub get
 
@@ -29,4 +27,3 @@ jobs:
 
     - name: Build APK
       run: cd hw && flutter build apk
-
