@@ -24,31 +24,37 @@ Route _createRoute({required WidgetBuilder builder}) {
   );
 }
 
-Widget listArticles(BuildContext context, List<Map<String?, dynamic>> recentArticles, int index, double height, bool isList) {
+Widget listArticles(
+    BuildContext context,
+    List<Map<String?, dynamic>> recentArticles,
+    int index,
+    double height,
+    bool isList) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          _createRoute(
-            builder: (context) => ArticleDetailScreen(
-                article: recentArticles[index]),
+        onTap: () {
+          Navigator.push(
+            context,
+            _createRoute(
+              builder: (context) =>
+                  ArticleDetailScreen(article: recentArticles[index]),
+            ),
+          );
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: SizedBox(
+            width: 300,
+            height: height,
+            child: isList
+                ? ArticleWidget(
+                    article: recentArticles[index],
+                    isLiked: false,
+                  )
+                : RecentArticleWidget(
+                    article: recentArticles[index], isLiked: false),
           ),
-        );
-      },
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: SizedBox(
-          width: 300,
-          height: height,
-          child: isList ? ArticleWidget(
-            article: recentArticles[index],
-            isLiked: false,
-          ) : RecentArticleWidget(
-            article: recentArticles[index], 
-            isLiked: false),
-        ),
-      )),
+        )),
   );
 }

@@ -60,8 +60,7 @@ class ArticleWidgetState extends State<ArticleWidget> {
                       child: SizedBox(
                         height: 150,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              20),
+                          borderRadius: BorderRadius.circular(20),
                           child: Hero(
                             tag: '${widget.article['title']}',
                             child: getArticleImage(
